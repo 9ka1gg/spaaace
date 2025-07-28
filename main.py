@@ -8,7 +8,7 @@ if not os.path.exists('images'):
     os.makedirs('images')
 
 
-def fetch_spacex_last_launch():
+def spacex_images_download():
     response = requests.get('https://api.spacexdata.com/v5/launches/5eb87d47ffd86e000604b38a')
     urls = response.json()['links']['flickr']['original']
     for num, url in enumerate(urls):
@@ -18,7 +18,7 @@ def fetch_spacex_last_launch():
             file.write(image_response.content)
 
 
-def apod():
+def apod_images_download():
     payload = {'api_key': 'MkGNWS5AjOhiDRaWVDR6d7asghEhplSjz3dpsDvy', 'count': 5}
     response = requests.get('https://api.nasa.gov/planetary/apod', params=payload)
     for num, element in enumerate(response.json()):
@@ -29,8 +29,8 @@ def apod():
             file.write(img_response.content)
 
 
-def epic():
-    payload = {'api_key': 'MkGNWS5AjOhiDRaWVDR6d7asghEhplSjz3dpsDvy'}
+def epic_images_download():
+    payload = {'api_key': 'MkGNWS5AjOhiDRaWVDR6d7asghEhplSjz3dpsDvy', 'count': 5}
     response = requests.get('https://api.nasa.gov/EPIC/api/natural', params=payload)
     response_data = response.json()
     for num, element in enumerate(response_data):
@@ -51,5 +51,3 @@ def get_extension(link):
     path, full_name = os.path.split(parsed_url.path)
     filename, extension = os.path.splitext(full_name)
     return filename, extension
-
-epic()
