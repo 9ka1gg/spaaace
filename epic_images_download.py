@@ -1,6 +1,10 @@
 import requests
 import os
 import datetime
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 
 if not os.path.exists('images'):
@@ -23,8 +27,8 @@ def epic_images_download(api):
 
 
 def main():
-    api_key = 'MkGNWS5AjOhiDRaWVDR6d7asghEhplSjz3dpsDvy'
-    epic_images_download(api_key)
+    API = os.getenv('API')
+    epic_images_download(API)
 
 
 if __name__ == '__main__':

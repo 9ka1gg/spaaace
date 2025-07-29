@@ -2,7 +2,10 @@ import requests
 import os
 from urllib.parse import urlsplit, unquote, urlparse
 import argparse
+from dotenv import load_dotenv
 
+
+load_dotenv()
 
 if not os.path.exists('images'):
     os.makedirs('images')
@@ -28,8 +31,8 @@ def get_extension(link):
 
 
 def main():
-    api_key = 'MkGNWS5AjOhiDRaWVDR6d7asghEhplSjz3dpsDvy'
-    apod_images_download(api_key)
+    API = os.getenv('API')
+    apod_images_download(API)
 
 
 if __name__ == '__main__':
