@@ -6,8 +6,13 @@ import os
 from time import sleep
 from dotenv import load_dotenv
 
+
 load_dotenv()
-bot = telegram.Bot(token=os.getenv('TOKEN'))
+
+
+TOKEN = os.getenv('TOKEN')
+CHAT_ID = os.getenv('CHAT_ID')
+bot = telegram.Bot(token=TOKEN)
 
 
 def auto_publish(directory):
@@ -18,7 +23,7 @@ def auto_publish(directory):
             try:
                 for element in images_list:
                     print(element)
-                    bot.send_photo(chat_id='@spaceteee', photo=open(f'{directory}/{element}', 'rb'))
+                    bot.send_photo(chat_id=CHAT_ID, photo=open(f'{directory}/{element}', 'rb'))
                     sleep(cooldown)
                 shuffle(images_list)
             except NetworkError:

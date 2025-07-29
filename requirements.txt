@@ -1,0 +1,4 @@
+python-telegram-bot==13.15
+urllib3==2.3.0
+requests==2.32.3
+API='MkGNWS5AjOhiDRaWVDR6d7asghEhplSjz3dpsDvy'
